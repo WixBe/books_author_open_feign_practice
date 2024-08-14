@@ -1,10 +1,15 @@
 package com.ust.book_service.dto;
 
 import com.ust.book_service.domain.Book;
+import jakarta.validation.constraints.NotEmpty;
 
 public record BookDto(
         String id,
+
+        @NotEmpty(message = "Title is required")
         String title,
+
+        @NotEmpty(message = "Author ID IS required")
         String authorId
 ) {
 
