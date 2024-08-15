@@ -3,6 +3,9 @@ package com.ust.author_service.controller;
 import com.ust.author_service.domain.Author;
 import com.ust.author_service.dto.AuthorDto;
 import com.ust.author_service.service.AuthorService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,12 @@ public class AuthorController {
     AuthorService authorService;
 
     @GetMapping("/")
+    @Operation(summary = "Get all authors", description = "")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Author returned successfully"),
+            @ApiResponse(responseCode = "404", description = "Author not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
     public ResponseEntity<List<Author>> getAllAuthors() {
         return ResponseEntity.ok().body(authorService.getAllAuthors());
     }

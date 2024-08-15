@@ -11,3 +11,25 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 server:
   port: 8100
+
+springdoc:
+  api-docs:
+      path: /v3/api-docs
+  swagger-ui:
+    path: swagger-ui.html
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info" # http://localhost:8100/actuator/
+  server:
+    port: 8101
+  health:
+    mongo:
+      command: ping
+      enabled: true
+    ping:
+      enabled: true
+#  endpoint:
+#    health:
+#      show-details: always

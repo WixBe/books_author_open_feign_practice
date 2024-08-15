@@ -9,5 +9,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger:
+    url: /swagger-ui.html
 server:
   port: 8200
