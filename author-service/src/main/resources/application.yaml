@@ -1,35 +1,9 @@
 spring:
+  config:
+    import: optional:configserver:http://localhost:8888
   application:
     name: author-service
-  data:
-    mongodb:
-      database: books
-      uri: mongodb://localhost:27017
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-server:
-  port: 8100
-
-springdoc:
-  api-docs:
-      path: /v3/api-docs
-  swagger-ui:
-    path: swagger-ui.html
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "health,info" # http://localhost:8100/actuator/
-  server:
-    port: 8101
-  health:
-    mongo:
-      command: ping
-      enabled: true
-    ping:
-      enabled: true
-#  endpoint:
-#    health:
-#      show-details: always
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: author-service
